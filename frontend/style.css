@@ -70,9 +70,9 @@ body {
     transition: 0.3s;
 }
 
-
 #header1{
-    margin-left: 20px;
+    font-size: 50px;
+    text-align: center;
 }
 
 .mainHeaders{
@@ -137,7 +137,7 @@ body {
 #addMed{
     border: solid;
     border-radius: 20px;
-    background-color: grey;
+    background-color: #57ACDC;
     cursor: pointer;
     padding: 12px;
     font-size: 16px;

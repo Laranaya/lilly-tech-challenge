@@ -33,8 +33,8 @@ async function myFunc(){
       let nameMed = document.createElement("h3"); //creates new HTML <h3> element to store name of medicine
       let priceMed = document.createElement("p"); //same as above but for price of medicine
 
-      if (data.medicines[i].name===""||data.medicines[i].name===null){  
-        nameMed.textContent=`Invalid medicine name`; //error handling  for if medicine name is blank
+      if (data.medicines[i].name.trim()===""||data.medicines[i].name===null){  
+        nameMed.textContent=`Invalid medicine name ⚠️`; //error handling  for if medicine name is blank
       }
 
       else{
@@ -42,7 +42,7 @@ async function myFunc(){
       }
 
       if(data.medicines[i].price===null||data.medicines[i].price===""){ //error handling for if price is null
-        priceMed.textContent=`Invalid price`;
+        priceMed.textContent=`Invalid price ⚠️`;
       }
 
       else{
