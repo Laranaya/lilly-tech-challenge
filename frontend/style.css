@@ -31,22 +31,53 @@ body {
 
 /* ---- Your custom styles below ---- */
 
+:root {
+    --bg: #FAFAFA;
+    --card: #FFFFFF;
+    --text: #272780;
+    --accent: #57ACDC;
+    --accent2: #57DCBE;
+    --error: #E91E63;
+    --header-text: #272780;
+}
+
+body.dark-mode {
+    --bg: #0D0D12;
+    --card: #1A1A22;
+    --text: #F2F2F7;
+    --accent: #57ACDC;
+    --accent2: #57DCBE;
+    --error: #E91E63;
+    --header-text: #57ACDC;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+}
+
+#themeToggle {
+    position: absolute;
+    right: 30px;
+    top: 50px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
 #header1{
-    margin-left: 15px;
+    margin-left: 20px;
 }
 
 .mainHeaders{
     display: flex;
     justify-content: space-between;
-}
-
-#medicineHeader{    
-    margin-left: 15px;
-    border: solid;
-    border-radius: 12px;
-    padding: 10px;
-    background-color: black;
-    color: white;
 }
 
 #priceHeader{
@@ -62,16 +93,28 @@ body {
     color: lightpink;
 }
 
-#displayMedicines{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 20px;
-    padding: 10px;
+#contentContainer {
+    display: flex;
+    justify-content: center;
+    gap: 60px;      /*controls spacing between left and right*/
+    padding: 20px 40px;
 }
 
-#userInput{
-    margin-left: 800px;
-    margin-top: -400px;
+
+#displayMedicines{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 800px;   /*keeps the grid width nice and fixed*/
+}
+
+#userInput {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    padding: 20px;
+    gap: 15px;
+    align-self: flex-start;
 }
 
 #inputMed, #inputPrice{
@@ -83,35 +126,60 @@ body {
     padding-right: 10px;
 }
 
-#inputMed{
-    margin-left: 30px;
-    margin-top: 50px;
+#inputMed, #inputPrice{
+    width: 100%;
 }
 
-#inputPrice{
-   margin-left: 30px;
-}
-
-#userHeader1{
-    font-size: 18px;
-    margin-left: 60px;
-}
-
-#userHeader2{
-    font-size: 18px;    
+#userHeader1, #userHeader2 {
+    text-align: center;
 }
 
 #addMed{
-    position: relative;
-    top: 80px;
-    left: -275px;    
     border: solid;
     border-radius: 20px;
     background-color: grey;
     cursor: pointer;
-    padding: 10px;
+    padding: 12px;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
 }
 
 #addMed:hover{
-    color: rgb(85, 127, 137);
+    color: #272AB0;
+}
+
+/*styling for the medicine data*/
+
+.medCard{
+    border-style: solid; 
+    border-radius: 20px;
+    padding: 5px;
+    text-align: center; 
+}
+
+.medCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+}
+
+#toast {
+    visibility: hidden;
+    width: 200px;
+    background: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: 0.5s;
+}
+
+#toast.show {
+    visibility: visible;
+    opacity: 1;
 }

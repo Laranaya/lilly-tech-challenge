@@ -8,7 +8,18 @@ const userMedName=document.getElementById("inputMed");
 const userPriceMed=document.getElementById("inputPrice");
 const addMedButton = document.getElementById("addMed");
 
+function showToast(text) {
+    const toast = document.getElementById("toast");
+    toast.textContent = text;
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 3000);
+}
+
 async function myFunc(){
+  med.innerHTML = ""; //this clears any old cards
   try{
     const response = await fetch("http://localhost:8000/medicines"); //data is not in front end folder, real data served by backend API
     //data.json lives in backend folder and NOT automatically accessible to browser unless serve it through endpoint
@@ -23,7 +34,7 @@ async function myFunc(){
       let priceMed = document.createElement("p"); //same as above but for price of medicine
 
       if (data.medicines[i].name===""||data.medicines[i].name===null){  
-        nameMed.textContent=`Unknown medicine name! :(`; //error handling  for if medicine name is blank
+        nameMed.textContent=`Invalid medicine name`; //error handling  for if medicine name is blank
       }
 
       else{
@@ -31,7 +42,7 @@ async function myFunc(){
       }
 
       if(data.medicines[i].price===null||data.medicines[i].price===""){ //error handling for if price is null
-        priceMed.textContent=`Invalid price :(`;
+        priceMed.textContent=`Invalid price`;
       }
 
       else{
@@ -64,15 +75,15 @@ async function myFunc(){
     const wordRegex = /^[A-Za-z]+$/;
 
     if(med1===""||med1===" "||price1==" "||price1===""){
-      alert("Please enter a value!");
+      showToast("Please enter a value!");
     }
 
     else if(!wordRegex.test(med1)){
-      alert("Please enter only letters!")
+      showToast("Please enter only letters!")
     }
 
      else if(!numRegex.test(price1)){
-      alert("Please enter only numbers!")
+      showToast("Please enter only numbers!")
     }
 
     else{
@@ -86,7 +97,7 @@ async function myFunc(){
     });
 
     if(userResponse.ok){
-      alert("Medicine added!");
+      showToast("Medicine added!");
       myFunc(); //refresh medicine list
     }
     }
@@ -95,12 +106,24 @@ async function myFunc(){
   catch(error){
     console.error("Oh no! Something has gone wrong :(", error);
   }
-}
 
+ }
 addMedButton.addEventListener("click", () => {
   userAdd(userMedName.value, userPriceMed.value);
 });
  
+const toggleBtn = document.getElementById("themeToggle");
+
+toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+
+    toggleBtn.textContent = 
+        document.body.classList.contains("dark-mode")
+        ? "☀️ Light Mode"
+        : "🌙 Dark Mode";
+});
+
+
 window.onload = myFunc; 
 //makes sure function runs automatically as SOON as the webpage finishes loading
 //used this since there is no other way for me to trigger the webpage to work 

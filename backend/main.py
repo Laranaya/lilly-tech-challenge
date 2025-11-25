@@ -136,7 +136,7 @@ def avg_price():
             #iterate through
             #add each price to a var   
             price=med.get("price")
-            try: #error handling so that we are only dividing with valid numbers
+            try: #error handling
                 totalPrice+=float(price)
                 count+=1
             except:
