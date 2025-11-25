@@ -134,6 +134,10 @@ body {
     text-align: center;
 }
 
+#userHeader1{
+    font-size: 20px;
+}
+
 #addMed{
     border: solid;
     border-radius: 20px;
