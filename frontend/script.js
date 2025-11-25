@@ -9,16 +9,18 @@ const userPriceMed=document.getElementById("inputPrice");
 const addMedButton = document.getElementById("addMed");
 
 async function myFunc(){
-  med.innerHTML = "";
   try{
     const response = await fetch("http://localhost:8000/medicines"); //data is not in front end folder, real data served by backend API
     //data.json lives in backend folder and NOT automatically accessible to browser unless serve it through endpoint
     const data = await response.json();
     for(let i=0; i<data.medicines.length; i++){ //need to iterate through
 
+      let card = document.createElement("div");
+      card.classList.add("medCard");
+      
       //flexible way to add HTML content dynamically through JavaScript
-      let nameMed = document.createElement("div"); //creates new HTML <div> element to store name of medicine
-      let priceMed = document.createElement("div"); //same as above but for price of medicine
+      let nameMed = document.createElement("h3"); //creates new HTML <h3> element to store name of medicine
+      let priceMed = document.createElement("p"); //same as above but for price of medicine
 
       if (data.medicines[i].name===""||data.medicines[i].name===null){  
         nameMed.textContent=`Unknown medicine name! :(`; //error handling  for if medicine name is blank
@@ -33,18 +35,20 @@ async function myFunc(){
       }
 
       else{
-        priceMed.textContent=data.medicines[i].price;
+        priceMed.textContent="£"+data.medicines[i].price;
       }
 
-    med.appendChild(nameMed); 
+    card.appendChild(nameMed); 
     //^^after creating and populating the nameMed element, we want to add to HTML page
-    //append child method adds created div (nameMed) to parent element that was selected earlier in the code
-    med.appendChild(priceMed); 
-    //^^after creating & populating the priceMed element, this line adds the price div to the med container on the webpage
+    //append child method adds created h3 (nameMed) to parent element - card
+    card.appendChild(priceMed); 
+    //^^after creating & populating the priceMed element, this line adds the price (<p>) to the parent container card (<div>) on the webpage
     
     //I used appendChild because it lets me dynamically build the UI using JavaScript. 
     //Instead of writing static HTML, I create elements based on the API response and insert them into the DOM
-  
+
+    med.appendChild(card);
+
     } 
   }
   catch(error){
@@ -78,7 +82,7 @@ async function myFunc(){
 
     const userResponse = await fetch("http://localhost:8000/create", {
     method: "POST",
-    body: formData
+    body: formData //backend file accepts formdata
     });
 
     if(userResponse.ok){
