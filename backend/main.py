@@ -16,7 +16,7 @@ Functions:
 - create_med: Reads the data.json file, adds a new medicine, and writes the updated data back to the file.
 - update_med: Reads the data.json file, updates the price of a medicine, and writes the updated data back to the file.
 - delete_med: Reads the data.json file, deletes a medicine, and writes the updated data back to the file.
-Usage:
+Usage:  
 Run this module directly to start the FastAPI application.
 """
 import uvicorn

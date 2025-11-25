@@ -30,3 +30,81 @@ body {
 }
 
 /* ---- Your custom styles below ---- */
+
+#header1{
+    margin-left: 15px;
+}
+
+.mainHeaders{
+    display: flex;
+    justify-content: space-between;
+}
+
+#medicineHeader{    
+    margin-left: 15px;
+    border: solid;
+    border-radius: 12px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+}
+
+#priceHeader{
+    margin-right: 850px;
+    border: solid;
+    border-radius: 12px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+}
+
+#medicineHeader:hover, #priceHeader:hover{
+    color: lightpink;
+}
+
+#userInput{
+    margin-left: 800px;
+    margin-top: -400px;
+}
+
+#inputMed, #inputPrice{
+    border: solid;
+    border-radius: 20px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+#inputMed{
+    margin-left: 30px;
+    margin-top: 50px;
+}
+
+#inputPrice{
+   margin-left: 30px;
+}
+
+#userHeader1{
+    font-size: 18px;
+    margin-left: 60px;
+}
+
+#userHeader2{
+    font-size: 18px;    
+}
+
+#addMed{
+    position: relative;
+    top: 80px;
+    left: -275px;    
+    border: solid;
+    border-radius: 20px;
+    background-color: grey;
+    cursor: pointer;
+    padding: 10px;
+}
+
+#addMed:hover{
+    color: rgb(85, 127, 137);
+}
